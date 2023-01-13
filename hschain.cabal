@@ -1,0 +1,67 @@
+cabal-version:          1.12
+
+name:                   hschain
+version:                0.1.0.0
+homepage:               https://github.com/initprism/hschain#readme
+author:                 initprism
+maintainer:             initprism@gmail.com
+copyright:              2022 initprism
+license:                MIT
+license-file:           LICENSE
+build-type:             Simple
+extra-source-files:     README.md
+
+source-repository head
+  type:                 git
+  location:             https://github.com/initprism/hschain
+
+library
+  hs-source-dirs:       src
+  exposed-modules:      Lib
+                      , Server
+                      , Control.Distributed.P2P
+  default-language:     Haskell2010
+  build-depends:
+                        GenericPretty
+                      , Spock
+                      , base >=4.7 && <5
+                      , async
+                      , hslogger
+                      , distributed-process
+                      , bytestring
+                      , cryptohash
+                      , text
+                      , aeson
+                      , binary
+                      , time
+                      , mtl
+                      , containers
+                      , network
+                      , network-transport
+                      , network-transport-tcp
+
+executable hschain
+  hs-source-dirs:       app
+  main-is:              Main.hs
+  default-language:     Haskell2010
+  build-depends:
+                        base >=4.7 && <5
+                      , hslogger
+                      , hschain
+
+test-suite hschain-test
+  type:                 exitcode-stdio-1.0
+  hs-source-dirs:       test
+  main-is:              Spec.hs
+  default-language:     Haskell2010
+  build-depends:
+                        base >=4.7 && <5
+                      , Spock
+                      , HTTP
+                      , tasty
+                      , tasty-hunit
+                      , async
+                      , bytestring
+                      , aeson
+                      , text
+                      , hschain

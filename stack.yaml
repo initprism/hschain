@@ -1,0 +1,11 @@
+resolver: lts-19.33 # Use GHC 9.0.2
+
+packages:
+- .
+
+extra-deps:
+  - Spock-0.14.0.0
+  - Spock-core-0.14.0.1
+  - reroute-0.7.0.0
+  - git:    https://github.com/haskell-distributed/distributed-process
+    commit: 7b8cbf59cc7f291a524a5c405d514e48e6544182
